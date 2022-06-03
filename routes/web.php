@@ -27,47 +27,49 @@ Route::get('/view', function() {
     return view('view');
 })->middleware(['auth'])->name('view');
 
-Route::get(
-    '/create/inventory',
-    [InventoryController::class, 'CreateInventory']
-)->name('CreateInventory');
+// Route::get(
+//     '/create/inventory',
+//     [InventoryController::class, 'CreateInventory']
+// )->name('CreateInventory');
 
-// Route::get('/create/inventory', 'App\Http\Controllers\InventoryController@CreateInventory')->name('CreateInventory');
+// Route::get('/users', [App\Http\Controllers\InventoryController::class, 'index']);
 
-Route::post(
-    '/store/inventory',
-    [InventoryController::class, 'StoreInventory']
-)->name('StoreInventory');
+Route::get('/create/inventory', 'App\Http\Controllers\InventoryController@CreateInventory')->name('CreateInventory');
 
-Route::get(
-    'show/inventory',
-    [InventoryController::class, 'ShowInventory']
-)->name('ShowInventory');
+// Route::post(
+//     '/store/inventory',
+//     [InventoryController::class, 'StoreInventory']
+// )->name('StoreInventory');
+
+// Route::get(
+//     'show/inventory',
+//     [InventoryController::class, 'ShowInventory']
+// )->name('ShowInventory');
 
 // Route::get(
 //     'show/inventory/{id}',
 //     [InventoryController::class, 'ShowInventoryById']
 // )->name('ShowInventoryById');
 
-Route::get(
-    'show/faktur',
-    [InventoryController::class, 'ShowFaktur']
-)->name('ShowFaktur');
+// Route::get(
+//     'show/faktur',
+//     [InventoryController::class, 'ShowFaktur']
+// )->name('ShowFaktur');
 
-Route::get(
-    'update/inventory/{id}',
-    [InventoryController::class, 'formUpdateInventory']
-)->name('formUpdateInventory');
+// Route::get(
+//     'update/inventory/{id}',
+//     [InventoryController::class, 'formUpdateInventory']
+// )->name('formUpdateInventory');
 
-Route::patch(
-    'updating/inventory/{id}',
-    [InventoryController::class, 'UpdateInventory']
-)->name('UpdateInventory');
+// Route::patch(
+//     'updating/inventory/{id}',
+//     [InventoryController::class, 'UpdateInventory']
+// )->name('UpdateInventory');
 
-Route::delete(
-    'delete/book/{id}',
-    [InventoryController::class, 'DeleteInventory']
-)->name('DeleteInventory');
+// Route::delete(
+//     'delete/book/{id}',
+//     [InventoryController::class, 'DeleteInventory']
+// )->name('DeleteInventory');
 
 require __DIR__.'/auth.php';
 
