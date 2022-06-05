@@ -2,7 +2,11 @@
 
 // namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FakturController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Middleware\IsAdmin;
+
+require __DIR__.'/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -27,51 +31,59 @@ Route::get('/view', function() {
     return view('view');
 })->middleware(['auth'])->name('view');
 
-// Route::get(
-//     '/create/inventory',
-//     [InventoryController::class, 'CreateInventory']
-// )->name('CreateInventory');
+Route::get(
+    '/create/inventory',
+    [InventoryController::class, 'CreateInventory']
+)->middleware(['IsAdmin'])->name('CreateInventory');
 
 // Route::get('/users', [App\Http\Controllers\InventoryController::class, 'index']);
 
-Route::get('/create/inventory', 'App\Http\Controllers\InventoryController@CreateInventory')->name('CreateInventory');
+// Route::get('/create/inventory', 'App\Http\Controllers\InventoryController@CreateInventory')->name('CreateInventory');
 
-// Route::post(
-//     '/store/inventory',
-//     [InventoryController::class, 'StoreInventory']
-// )->name('StoreInventory');
+Route::post(
+    '/store/inventory',
+    [InventoryController::class, 'StoreInventory']
+)->middleware(['IsAdmin'])->name('StoreInventory');
 
-// Route::get(
-//     'show/inventory',
-//     [InventoryController::class, 'ShowInventory']
-// )->name('ShowInventory');
+Route::get(
+    'show/inventory',
+    [InventoryController::class, 'ShowInventory']
+)->middleware(['IsAdmin'])->name('ShowInventory');
 
-// Route::get(
-//     'show/inventory/{id}',
-//     [InventoryController::class, 'ShowInventoryById']
-// )->name('ShowInventoryById');
+Route::get(
+    'show/inventory/{id}',
+    [InventoryController::class, 'ShowInventoryById']
+)->middleware(['IsAdmin'])->name('ShowInventoryById');
 
-// Route::get(
-//     'show/faktur',
-//     [InventoryController::class, 'ShowFaktur']
-// )->name('ShowFaktur');
+Route::get(
+    'update/inventory/{id}',
+    [InventoryController::class, 'formUpdateInventory']
+)->middleware(['IsAdmin'])->name('formUpdateInventory');
 
-// Route::get(
-//     'update/inventory/{id}',
-//     [InventoryController::class, 'formUpdateInventory']
-// )->name('formUpdateInventory');
+Route::patch(
+    'updating/inventory/{id}',
+    [InventoryController::class, 'UpdateInventory']
+)->middleware(['IsAdmin'])->name('UpdateInventory');
 
-// Route::patch(
-//     'updating/inventory/{id}',
-//     [InventoryController::class, 'UpdateInventory']
-// )->name('UpdateInventory');
+Route::delete(
+    'delete/book/{id}',
+    [InventoryController::class, 'DeleteInventory']
+)->middleware(['IsAdmin'])->name('DeleteInventory');
 
-// Route::delete(
-//     'delete/book/{id}',
-//     [InventoryController::class, 'DeleteInventory']
-// )->name('DeleteInventory');
+Route::get(
+    'create/faktur',
+    [FakturController::class, 'CreateFaktur']
+)->name('CreateFaktur');
 
-require __DIR__.'/auth.php';
+Route::get(
+    'store/faktur',
+    [FakturController::class, 'StoreFaktur']
+)->name('StoreFaktur');
+
+Route::get(
+    'show/faktur',
+    [FakturController::class, 'ShowFaktur']
+)->name('ShowFaktur');
 
 // Auth::routes();
 

@@ -16,10 +16,30 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check() || !auth()->user()->is_admin) { // klo ngelanggar dia bkna dmin
+        if(!auth()->check() || !auth()->user()->is_admin) { // klo ngelanggar dia bkn admin
             // abort(403);
-            // return back();
+            return back();
         }
         return $next($request);
     }
 }
+
+
+
+// public function handle($request, Closure $next)
+//     {
+//         if (\Auth::user()->idAdmin != null) {
+//             return $next($request);
+//         }
+//         return redirect()->back();
+//     }
+
+
+//     public function handle(Request $request, Closure $next)
+//     {
+//         if(!auth()->check() || !auth()->user()->is_admin) { // klo ngelanggar dia bkn admin
+//             // abort(403);
+//             return back();
+//         }
+//         return $next($request);
+//     }
