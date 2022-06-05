@@ -48,10 +48,10 @@ class FakturController extends Controller
 
     public function UpdateFaktur($id, Request $request){
         Faktur::findOrFail($id)->update([
-            'KategoriBarang' => $request->Kategori,
-            'HargaBarang' => $request->Kategori,
-            'NamaBarang' => $request->HargaBarang,
-            'KuantitasBarang' => $request->FotoBarang,
+            'KategoriBarang' => $request->KategoriBarang,
+            'HargaBarang' => $request->HargaBarang,
+            'NamaBarang' => $request->NamaBarang,
+            'KuantitasBarang' => $request->KuantitasBarang,
             'AlamatPengiriman' => $request->AlamatPengiriman
         ]);
 

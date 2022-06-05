@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
 //     [InventoryController::class, 'CreateInventory']
 // )->middleware(['IsAdmin'])->name('CreateInventory');
 
-Route::get('/create/inventory', [InventoryController::class, 'CreateInventory'])->middleware('IsAdmin');
+// Route::get('/create/inventory', [InventoryController::class, 'CreateInventory'])->middleware('IsAdmin');
 Route::post('/store/inventory', [InventoryController::class, 'StoreInventory'])->name('StoreInventory')->middleware('admin');
 // ->name('storeBook')->middleware('admin');
 Route::get('/inventory', [InventoryController::class, 'ShowInventory'])->middleware('auth');
